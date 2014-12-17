@@ -3,8 +3,10 @@ module Supermarket where
 import Data.List
 
 priceList :: Char -> [Int]
-priceList 'B' = [30]
 priceList 'A' = [50, 50, 30]
+priceList 'B' = [30, 15]
+priceList 'C' = [20]
+priceList 'D' = [15]
 priceList _ = []
 
 scan :: String -> Int

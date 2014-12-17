@@ -18,9 +18,18 @@ spec = do
   it "should handle different output" $ do
     scan "AB" `shouldBe` 80
 
+  it "should handle four different item type" $ do 
+    scan "CDBA" `shouldBe` 115
+
   it "should handle multiple values" $ do
     scan "AA" `shouldBe` 100
 
-  it "three A's are cheaper than two" $ do
+  it "three As are cheaper than two" $ do
     scan "AAA" `shouldBe` 130
+
+  it "six As should be as cheap as buy two times three A" $ do 
+    scan "AAAAAA" `shouldBe` 260
+
+  it "this is a really complicated string by specification" $ do 
+    scan "DABABA" `shouldBe` 190
   
