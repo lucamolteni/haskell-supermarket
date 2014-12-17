@@ -22,6 +22,5 @@ spec = do
     scan "AA" `shouldBe` 100
 
   it "three A's are cheaper than two" $ do
-    True
-    -- scan "AAA" `shouldBe` 130
+    scan "AAA" `shouldBe` 130
   

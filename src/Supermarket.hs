@@ -2,18 +2,13 @@ module Supermarket where
 
 import Data.List
 
-price :: Char -> Int
-price 'A' = 50
-price 'B' = 30
-
-
-scan list = sum $ map price list 
-
 priceList :: Char -> [Int]
+priceList 'B' = [30]
 priceList 'A' = [50, 50, 30]
 priceList _ = []
 
-scanList list = map (val 'A') (group (sort list))
+scan :: String -> Int
+scan list = sum $ concat $ map (\list -> val (head list) list) (group (sort list))
 
-
+val :: Char -> [Char] -> [Int]
 val c list = map snd $ zip list (cycle $ priceList c)
