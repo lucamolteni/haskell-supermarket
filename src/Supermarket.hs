@@ -8,7 +8,10 @@ priceList 'A' = [50, 50, 30]
 priceList _ = []
 
 scan :: String -> Int
-scan list = sum $ concat $ map (\list -> val (head list) list) (group (sort list))
+scan list = sum . concat $ map checkPrices groupedList 
+    where groupedList = (group . sort) list
+          checkPrices l = price (head l) l
 
-val :: Char -> [Char] -> [Int]
-val c list = map snd $ zip list (cycle $ priceList c)
+price :: Char -> [Char] -> [Int]
+price c itemList = map snd $ zip itemList (cycledPrices c) 
+    where cycledPrices c = cycle $ priceList c
