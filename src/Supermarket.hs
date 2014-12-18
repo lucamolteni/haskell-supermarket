@@ -15,5 +15,5 @@ scan list = sum . concat $ map checkPrices groupedList
           checkPrices l = price (head l) l
 
 price :: Char -> [Char] -> [Int]
-price c itemList = map snd $ zip itemList (cycledPrices c) 
-    where cycledPrices = cycle . priceList 
+price c itemList = take (length itemList) 
+    [ j | i <- itemList , j <- (cycle . priceList) c]
